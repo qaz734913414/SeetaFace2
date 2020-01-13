@@ -93,7 +93,6 @@ Knowing people to understand everything, open source empowerment and development
   - CPU supports SSE2 and FMA [optinal] (x86) or NENO (ARM) support
 
 ### 2.2 Compile parameter
-  - PLATFORM: [STRING] Compile target architecture, x86/x86_64/amd64 does not need to be set, ARM architecture needs to be set to corresponding platform
   - BUILD_DETECOTOR: Whether to compile the face detection module. ON: On; OFF: Off
   - BUILD_LANDMARKER: Whether to compile the face key positioning module. ON: On; OFF: Off
   - BUILD_RECOGNIZER: Whether to compile the face feature extraction and comparison module. ON: On; OFF: Off
@@ -163,7 +162,11 @@ Knowing people to understand everything, open source empowerment and development
             cd SeetaFace2
             mkdir build
             cd build
-            cmake .. -DCMAKE_INSTALL_PREFIX=install -DCMAKE_BUILD_TYPE=Release -DBUILD_EXAMPLE=OFF # Set to ON if there is OpneCV
+            cmake .. -G"Visual Studio 14 2015" \
+                  -DCMAKE_INSTALL_PREFIX=install \
+                  -DCMAKE_BUILD_TYPE=Release \
+                  -DBUILD_EXAMPLE=OFF # Set to ON if there is OpneCV
+            #Note: -G: Generators. The generators must match the msvc compiler.
             cmake --build . --config Release
 
       - Installation
